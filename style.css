@@ -42,19 +42,28 @@ body {
 /* ================================================= */
 .main-nav {
     background-color: var(--card-background);
-    padding: 1rem 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Biztosítja, hogy mindig legfelül legyen */
+    z-index: 1000;
+    
+    /* ÚJ BEÁLLÍTÁSOK A TÖKÉLETES IGAZÍTÁSHOZ */
+    display: flex;
+    align-items: center; /* Ez a sor igazítja függőlegesen középre az összes elemet! */
+    justify-content: space-between; /* A két szélre tolja a tartalmat */
+    padding: 0 1.5rem; /* Térköz a sáv két szélén */
+    height: 70px; /* Fix magasság a konzisztencia miatt */
 }
 
 .main-nav ul {
     display: flex;
     justify-content: center;
     list-style: none;
+    /* TÖRÖLVE: A margin: 0 auto; sorra már nincs szükség */
+    margin: 0;
+    padding: 0;
 }
 
 .main-nav li {
@@ -317,12 +326,6 @@ footer {
 /* ÚJ: ÉLŐ ADÁS JELZŐ STÍLUSAI                     */
 /* ================================================= */
 #twitch-status {
-    /* A POZICIONÁLÁS MÓDOSÍTÁSA */
-    position: absolute; /* Fontos: 'fixed' helyett 'absolute' */
-    top: 50%; /* A szülő elem (a menü) függőleges közepére */
-    right: 1.5rem; /* Távolság a jobb széltől */
-    transform: translateY(-50%); /* A trükk: saját magasságának felével visszahúzza, így lesz tökéletesen középen */
-    z-index: 1001; 
     
     /* A többi stílus változatlan marad */
     display: flex;
