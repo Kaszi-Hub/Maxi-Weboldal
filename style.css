@@ -370,3 +370,10 @@ footer {
 .hidden {
     display: none !important;
 }
+
+.social-link:active,
+#twitch-status:active {
+    transform: scale(1); /* Kattintáskor azonnal visszaáll az eredeti méretre */
+    filter: brightness(0.9); /* A kattintást egy finom sötétedéssel jelezzük */
+    transition: transform 0.05s, filter 0.05s; /* Gyorsabb átmenet a kattintás érzetéért */
+}
