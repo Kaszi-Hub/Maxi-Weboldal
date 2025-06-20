@@ -1,0 +1,319 @@
+/* Változók a könnyű testreszabáshoz */
+:root {
+    --background-color: #121212;
+    --card-background: #1e1e1e;
+    --border-color: #333333;
+    --primary-text-color: #e0e0e0;
+    --secondary-text-color: #a0a0a0;
+    --accent-color: #bb86fc;
+    /* ÚJ: Hozzáadtam a színeket ide is a könnyebb kezelhetőségért */
+    --red-color: #e63946;
+    --green-color: #2a9d8f; /* Szebb zöld árnyalat */
+    --blue-color: #0077b6;
+}
+
+/* ================================================= */
+/* ÚJ: Sima görgetés és a fix menü magasságának beállítása */
+/* ================================================= */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Ennek kb. a menü magasságának kell lennie */
+}
+
+/* Alapbeállítások */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary-text-color);
+    line-height: 1.6;
+    background-color: var(--background-color);
+    background-image: 
+        repeating-linear-gradient(45deg, rgba(187, 134, 252, 0.05), rgba(187, 134, 252, 0.05) 1px, transparent 1px, transparent 35px),
+        repeating-linear-gradient(-45deg, rgba(187, 134, 252, 0.05), rgba(187, 134, 252, 0.05) 1px, transparent 1px, transparent 35px);
+}
+
+/* ================================================= */
+/* ÚJ: FIX, RAGADÓS NAVIGÁCIÓS MENÜ                  */
+/* ================================================= */
+.main-nav {
+    background-color: var(--card-background);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Biztosítja, hogy mindig legfelül legyen */
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.main-nav li {
+    margin: 0 1rem;
+}
+
+.main-nav a {
+    color: var(--primary-text-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-nav a:hover {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+}
+
+
+/* Felső rész (header) stílusa */
+header {
+    text-align: center;
+    /* MÓDOSÍTOTT: Növeltük a felső paddingot, hogy ne csússzon a menü alá a tartalom */
+    padding: 100px 1rem 2rem 1rem; 
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: var(--secondary-text-color);
+}
+
+/* Fő tartalom elrendezése */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Új szekció címek stílusa */
+.section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--primary-text-color);
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Elválasztó vonal stílusa */
+.section-divider {
+    border: none;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 4rem auto;
+    width: 80%;
+}
+
+/* Kaszinó kártyák rácsos elrendezése */
+.casino-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+/* Egy kaszinó kártya stílusa */
+.casino-card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--primary-text-color);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden; 
+}
+
+.casino-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.casino-card img {
+    height: 80px;          
+    width: 100%;            
+    object-fit: contain;    
+    max-width: 180px;       
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+
+.casino-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.casino-card p {
+    font-size: 0.9rem;
+    color: var(--secondary-text-color);
+}
+
+/* FIGYELEMFELKELTŐ SZALAG (VÉGLEGES) */
+.card-badge {
+    position: absolute;
+    top: 22px;
+    right: -30px;
+    transform: rotate(45deg);
+    width: 130px;
+    height: 30px;
+    background: var(--red-color);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 30px;
+    white-space: nowrap;
+}
+
+.badge-soon {
+    background: var(--blue-color);
+}
+
+.red{
+    color: red;
+    font-weight: bold;
+}
+
+.green{
+    color: green;
+    font-weight: bold;
+}
+
+/* Elérhetőségek szekció */
+.socials {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.socials h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.social-link:hover {
+    transform: scale(1.05);
+}
+
+.social-link i {
+    font-size: 1.2rem;
+}
+
+.social-link.twitch { background-color: #9146ff; color: white; }
+.social-link.discord { background-color: #5865F2; color: white; }
+.social-link.x { background-color: #ffffff; color: #000000; }
+
+/* Lábléc */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--secondary-text-color);
+    font-size: 0.9rem;
+}
+
+/* Mobilos nézet (automatikusan működik a grid miatt, de finomíthatunk) */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    .main-nav {
+        font-size: 0.8rem; /* Mobilon kisebb betűk a menüben */
+    }
+    .main-nav li {
+        margin: 0 0.5rem;
+    }
+}
+
+/* ================================================= */
+/* ÚJ: ÉLŐ ADÁS JELZŐ STÍLUSAI                     */
+/* ================================================= */
+#twitch-status {
+    /* A POZICIONÁLÁS MÓDOSÍTÁSA */
+    position: absolute; /* Fontos: 'fixed' helyett 'absolute' */
+    top: 50%; /* A szülő elem (a menü) függőleges közepére */
+    right: 1.5rem; /* Távolság a jobb széltől */
+    transform: translateY(-50%); /* A trükk: saját magasságának felével visszahúzza, így lesz tökéletesen középen */
+    z-index: 1001; 
+    
+    /* A többi stílus változatlan marad */
+    display: flex;
+    align-items: center;
+    background-color: #2e2e2e;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--primary-text-color);
+    font-weight: bold;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+#twitch-status:hover {
+    background-color: #9146ff; /* Twitch lila szín */
+    transform: scale(1.05);
+}
+
+#twitch-status .live-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #e91916; /* Piros pötty */
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    animation: pulse 1.5s infinite; /* Pulzáló animáció */
+}
+
+#twitch-status i.fa-twitch {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* A pulzáló animáció */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(233, 25, 22, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(233, 25, 22, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(233, 25, 22, 0); }
+}
+
+/* Segédosztály az elrejtéshez */
+.hidden {
+    display: none !important;
+}
