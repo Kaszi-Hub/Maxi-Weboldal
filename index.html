@@ -11,7 +11,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body>
+<body class = "gated">
+<!-- Verification Modal -->
+<div id="verify-overlay" class="verify-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="verify-title">
+  <div class="verify-modal">
+    <h2 id="verify-title">Verification Required</h2>
+    <p class="verify-text">
+      Only persons over the age of 18 may continue. The content of this site is intended for users residing abroad.
+      By continuing, you confirm your age and accept responsibility for your access. Please confirm this.
+    </p>
+
+    <div class="verify-checkboxes">
+      <label class="checkbox-row">
+        <input type="checkbox" id="consentAge">
+        <span>I'm 18+ years old.</span>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" id="consentAbroad">
+        <span>I confirm I reside abroad and accept responsibility for my access.</span>
+      </label>
+    </div>
+
+    <div class="verify-actions">
+      <button id="verify-exit" class="btn btn-secondary" type="button">Exit</button>
+      <button id="verify-continue" class="btn btn-primary" type="button" disabled>Continue</button>
+    </div>
+  </div>
+</div>
+
+
     <nav class="main-nav">
         <ul>
             <li><a href="#">Főoldal</a></li>
@@ -34,28 +62,17 @@
             <h2 class="section-title">Best Offers</h2>
             <div class="casino-grid">
 
-                <a href="https://standarttrack.com/?promo=49941ef0-30f2-42f3-99d6-e11dd094136e&target=register" target="_blank" class="casino-card">
-                    <div class="card-badge">New</div>
-                    <img src="images/vavada.png" alt="Vavada logó">
-                    <h3>Vavada</h3>
-                    <p>
-                        Crypto és Kártyás befizetés/kifizetés<br>
-                        10% cashback <br>
-                        <span class="green">Nincs KYC</span><br>
-                    </p>
-                </a>
-
-                <a href="https://slot-game.fun/84jYJjMN" target="_blank" class="casino-card">
+                <a href="https://casinobet.com/?a=39b00b" target="_blank" class="casino-card">
                     <div class="card-badge">NEW</div>
-                    <img src="images/royalsea.png" alt="RoyalSea Logó">
-                    <h3>RoyalSea</h3>
+                    <img src="images/casinobet.png" alt="Casinobet logó">
+                    <h3>Casinobet</h3>
                     <p>
-                        promo code - <span class="red">HUNTER</span><br>
-                        Crypto és Kártyás befizetés/kifizetés <br>        
-                        <span class="red">Van KYC</span><br>
+                        Instant cashout <br>
+                        Instant rakeback <br>
+                        Daily, Weekly, Monthly bonus <br>
+                        <span class="green">NO KYC</span><br>
                     </p>
                 </a>
-
 
                 <a href="https://amn.bet/al1vehunter" target="_blank" class="casino-card">
                     <div class="card-badge">NEW</div>
@@ -64,18 +81,6 @@
                     <p>
                         Kártyás/Crypto deposit <br>
                         Heti Slot Cashback + 20 ingyenes pörgetés email/telefonszám megerősítésével <br>                 
-                        <span class="red">Van KYC</span><br>
-                    </p>
-                </a>
-
-                <a href="https://bitzplay.fun/d58360204" target="_blank" class="casino-card">
-                    <div class="card-badge">New</div>
-                    <img src="images/bitz.jpg" alt="Bitz Logó">
-                    <h3>Bitz</h3>
-                    <p>
-                        Make your day with Bitz Casino! <br>
-                        Promo code: <span class="red">AL1VE </span><br>
-                        No deposit bonus of 8 USDT for the Piggy coins slot. <br>
                         <span class="red">Van KYC</span><br>
                     </p>
                 </a>
@@ -101,17 +106,6 @@
                         <span class="red">Van KYC</span><br>
                     </p>
                 </a>
-                
-
-                <a href="https://trustdice.win/bonus?ref=u_al1vehunter" target="_blank" class="casino-card">
-                    <img src="images/trustdice.png" alt="Trustdice logó">
-                    <h3>Trustdice</h3>
-                    <p>
-                        Deposit Using This Link to Get 500% Of Bonus and 100 Free spins on first 3 deposits <br>
-                        code: <span class="red">AL1VEHUNTER</span><br>
-                        <span class="green">Nincs KYC</span><br>
-                    </p>
-                </a>
 
                 <a href="https://record.betgroup.partners/_Xi6Bx-yJ4GdxNdTbIpmuLWNd7ZgqdRLk/1/" target="_blank" class="casino-card">
                     <img src="images/qbet.png" alt="Qbet logó">
@@ -122,29 +116,6 @@
                         <span class="red">Van KYC</span><br>
                     </p>
                 </a>
-
-                <div class="casino-card">
-                    <div class="card-badge badge-soon">Hamarosan</div>
-                    <img src="images/vodka.png" alt="Vodka logó">
-                    <h3>Vodka</h3>
-                    <p>
-                        Cashback rendszer<br>
-                        Gyors kifizetés<br>
-                        <span class="green">Nincs KYC</span><br>
-                    </p>
-                </div>
-
-                <div class="casino-card">
-                    <div class="card-badge badge-soon">Hamarosan</div>
-                    <img src="images/chancer.png" alt="Chancer logó">
-                    <h3>Chancer</h3>
-                    <p>
-                        Heti cashback rendszer<br>
-                        Crypto és kártyás befizetés és kifizetés<br>
-                        Napi kifizetés limit 2,000$<br>
-                        <span class="red">Van KYC</span><br>
-                    </p>
-               </div>
             </div>
         </section>
 
@@ -203,6 +174,78 @@
     </footer>
 
     <script>
+            
+ // ===== Verification Modal Logic (always show, hard gate) =====
+  (function () {
+    const OVERLAY_ID = 'verify-overlay';
+    const AGE_ID = 'consentAge';
+    const ABROAD_ID = 'consentAbroad';
+    const EXIT_ID = 'verify-exit';
+    const CONTINUE_ID = 'verify-continue';
+
+    function showOverlay() {
+      const overlay = document.getElementById(OVERLAY_ID);
+      if (!overlay) return;
+      overlay.classList.remove('hidden');
+
+      // teljes gate: semmi ne látszódjon a modalon kívül
+      document.documentElement.classList.add('gated');
+      document.body.classList.add('gated');
+
+      // fókusz az első checkboxra
+      const first = document.getElementById(AGE_ID);
+      if (first) first.focus();
+    }
+
+    function hideOverlay() {
+      const overlay = document.getElementById(OVERLAY_ID);
+      if (!overlay) return;
+      overlay.classList.add('hidden');
+
+      // gate feloldása: oldal újra látható
+      document.documentElement.classList.remove('gated');
+      document.body.classList.remove('gated');
+    }
+
+    function initVerify() {
+      const overlay = document.getElementById(OVERLAY_ID);
+      if (!overlay) return;
+
+      const age = document.getElementById(AGE_ID);
+      const abroad = document.getElementById(ABROAD_ID);
+      const btnExit = document.getElementById(EXIT_ID);
+      const btnGo = document.getElementById(CONTINUE_ID);
+
+      function updateState() {
+        const ready = !!(age?.checked && abroad?.checked);
+        if (btnGo) btnGo.disabled = !ready;
+      }
+
+      age?.addEventListener('change', updateState);
+      abroad?.addEventListener('change', updateState);
+
+      btnExit?.addEventListener('click', () => {
+        // Itt add meg, hová vigyen az Exit
+        window.location.href = 'https://www.google.com';
+      });
+
+      btnGo?.addEventListener('click', () => {
+        // nincs mentés, csak feloldjuk a gate-et
+        hideOverlay();
+      });
+
+      // mindig mutatjuk a modalt és lezárjuk a hátteret
+      showOverlay();
+      updateState();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initVerify, { once: true });
+    } else {
+      initVerify();
+    }
+  })();
+
         // --- Konfiguráció ---
         const TWITCH_CHANNEL = 'al1vehunter'; // IDE ÍRD A SAJÁT TWITCH NEVED!
         const TWITCH_CLIENT_ID = 'jbdr5e5x1wx0idyrg77mxy7m6efcln'; // IDE ÍRD A TWITCH DEVELOPER OLDALRÓL KAPOTT CLIENT ID-T!
@@ -253,6 +296,7 @@
     </script>
 </body>
 </html>
+
 
 
 
