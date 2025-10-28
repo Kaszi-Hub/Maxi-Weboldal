@@ -1,619 +1,248 @@
 /* Változók a könnyű testreszabáshoz */
 :root {
-    --background-color: #121212;
-    --card-background: #1e1e1e;
-    --border-color: #333333;
-    --primary-text-color: #e0e0e0;
-    --secondary-text-color: #a0a0a0;
-    --accent-color: #bb86fc;
-    /* ÚJ: Hozzáadtam a színeket ide is a könnyebb kezelhetőségért */
-    --red-color: #e63946;
-    --green-color: #2a9d8f; /* Szebb zöld árnyalat */
-    --blue-color: #0077b6;
+  --background-color: #121212;
+  --card-background: #1e1e1e;
+  --border-color: #333333;
+  --primary-text-color: #e0e0e0;
+  --secondary-text-color: #a0a0a0;
+  --accent-color: #bb86fc;
+  --red-color: #e63946;
+  --green-color: #2a9d8f;
+  --blue-color: #0077b6;
 }
 
 /* ================================================= */
-/* ÚJ: Sima görgetés és a fix menü magasságának beállítása */
+/* Sima görgetés + offset a fix menühöz */
 /* ================================================= */
 html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Ennek kb. a menü magasságának kell lennie */
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 /* Alapbeállítások */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    color: var(--primary-text-color);
-    line-height: 1.6;
-    background-color: var(--background-color);
-    background-image: 
-        repeating-linear-gradient(45deg, rgba(187, 134, 252, 0.05), rgba(187, 134, 252, 0.05) 1px, transparent 1px, transparent 35px),
-        repeating-linear-gradient(-45deg, rgba(187, 134, 252, 0.05), rgba(187, 134, 252, 0.05) 1px, transparent 1px, transparent 35px);
+  font-family: 'Poppins', sans-serif;
+  color: var(--primary-text-color);
+  line-height: 1.6;
+  background-color: var(--background-color);
+  background-image:
+    repeating-linear-gradient(45deg, rgba(187,134,252,0.05), rgba(187,134,252,0.05) 1px, transparent 1px, transparent 35px),
+    repeating-linear-gradient(-45deg, rgba(187,134,252,0.05), rgba(187,134,252,0.05) 1px, transparent 1px, transparent 35px);
 }
 
 /* ================================================= */
-/* ÚJ: FIX, RAGADÓS NAVIGÁCIÓS MENÜ                  */
+/* FIX, ragadós navigáció */
 /* ================================================= */
 .main-nav {
-    background-color: var(--card-background);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    position: fixed; /* Módosítás: A sáv pozíciója legyen fix, de a tartalom igazítását máshogy oldjuk meg */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    height: 70px; /* A magasság maradhat */
-
-    /* A JAVÍTÁS: Flexbox-szal középre rendezzük a menüt */
-    display: flex;
-    justify-content: center; /* A menüpontok listáját középre igazítja */
-    align-items: center;     /* Függőlegesen is középre igazít mindent */
+  background-color: var(--card-background);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  z-index: 1000;
+  height: 70px;
+  display: flex; justify-content: center; align-items: center;
 }
 
-.main-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    /* TÖRÖLVE: A margin: 0 auto; sorra már nincs szükség */
-    margin: 0;
-    padding: 0;
-}
-
-.main-nav li {
-    margin: 0 1rem;
-}
+.main-nav ul { display: flex; justify-content: center; list-style: none; margin: 0; padding: 0; }
+.main-nav li { margin: 0 1rem; }
 
 .main-nav a {
-    color: var(--primary-text-color);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    text-transform: uppercase;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  color: var(--primary-text-color);
+  text-decoration: none;
+  font-weight: bold; font-size: 1rem; text-transform: uppercase;
+  padding: 0.5rem 1rem; border-radius: 5px;
+  transition: background-color .3s ease, color .3s ease;
 }
+.main-nav a:hover { background-color: var(--accent-color); color: var(--background-color); }
 
-.main-nav a:hover {
-    background-color: var(--accent-color);
-    color: var(--background-color);
-}
+/* Fejléc */
+header { text-align: center; padding: 100px 1rem 2rem 1rem; }
+header h1 { font-size: 2.5rem; margin-bottom: .5rem; }
+header p { font-size: 1.1rem; color: var(--secondary-text-color); }
 
+/* Fő tartalom */
+main { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
 
-/* Felső rész (header) stílusa */
-header {
-    text-align: center;
-    /* MÓDOSÍTOTT: Növeltük a felső paddingot, hogy ne csússzon a menü alá a tartalom */
-    padding: 100px 1rem 2rem 1rem; 
-}
-
-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-
-header p {
-    font-size: 1.1rem;
-    color: var(--secondary-text-color);
-}
-
-/* Fő tartalom elrendezése */
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-/* Új szekció címek stílusa */
 .section-title {
-    text-align: center;
-    font-size: 1.8rem;
-    color: var(--primary-text-color);
-    margin-top: 4rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
+  text-align: center; font-size: 1.8rem; color: var(--primary-text-color);
+  margin-top: 4rem; margin-bottom: 1.5rem; font-weight: 600;
 }
 
-/* Elválasztó vonal stílusa */
 .section-divider {
-    border: none;
-    height: 1px;
-    background-color: var(--border-color);
-    margin: 4rem auto;
-    width: 80%;
+  border: none; height: 1px; background-color: var(--border-color);
+  margin: 4rem auto; width: 80%;
 }
 
-/* Kaszinó kártyák rácsos elrendezése */
+/* Kártyarács */
 .casino-grid {
-    display: flex;           /* A 'grid'-et 'flex'-re cseréljük */
-    flex-wrap: wrap;         /* Engedélyezzük a sortörést, ha nem férnek el az elemek */
-    justify-content: center; /* Ez a sor fogja középre rendezni az elemeket minden sorban! */
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 1.5rem; margin-bottom: 4rem;
 }
 
-/* Egy kaszinó kártya stílusa */
 .casino-card {
-    background-color: var(--card-background);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    text-decoration: none;
-    color: var(--primary-text-color);
-    padding: 1.5rem;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    position: relative;
-    overflow: hidden; 
-    flex: 0 1 300px; /* <<--- EZT A SORT ADD HOZZÁ (Ez kezeli a rugalmas szélességet) */
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 10px; text-decoration: none; color: var(--primary-text-color);
+  padding: 1.5rem; text-align: center;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  position: relative; overflow: hidden;
+  flex: 0 1 300px;
 }
+div.casino-card { cursor: default; }
 
-div.casino-card {
-    cursor: default;
-}
-
-.casino-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
+.casino-card:hover { transform: translateY(-5px); border-color: var(--accent-color); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
 .casino-card img {
-    height: 80px;          
-    width: 100%;            
-    object-fit: contain;    
-    max-width: 180px;       
-    margin-bottom: 1rem;
-    border-radius: 5px;
+  height: 80px; width: 100%; object-fit: contain; max-width: 180px;
+  margin-bottom: 1rem; border-radius: 5px;
 }
 
-.casino-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-}
+.casino-card h3 { font-size: 1.25rem; margin-bottom: .5rem; }
+.casino-card p { font-size: .9rem; color: var(--secondary-text-color); }
 
-.casino-card p {
-    font-size: 0.9rem;
-    color: var(--secondary-text-color);
-}
-
-/* FIGYELEMFELKELTŐ SZALAG (VÉGLEGES) */
+/* Badge */
 .card-badge {
-    position: absolute;
-    top: 22px;
-    right: -30px;
-    transform: rotate(45deg);
-    width: 130px;
-    height: 30px;
-    background: var(--red-color);
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 30px;
-    white-space: nowrap;
+  position: absolute; top: 22px; right: -30px; transform: rotate(45deg);
+  width: 130px; height: 30px; background: var(--red-color);
+  box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+  color: #fff; font-size: 14px; font-weight: bold; text-transform: uppercase;
+  text-align: center; line-height: 30px; white-space: nowrap;
 }
+.badge-soon { background: var(--blue-color); }
 
-.badge-soon {
-    background: var(--blue-color);
-}
+.red{ color: red; font-weight: bold; }
+.green{ color: green; font-weight: bold; }
 
-.red{
-    color: red;
-    font-weight: bold;
-}
+/* Elérhetőségek */
+.socials { text-align: center; margin-bottom: 4rem; }
+.socials h2 { font-size: 2rem; margin-bottom: 1.5rem; }
 
-.green{
-    color: green;
-    font-weight: bold;
-}
-
-/* Elérhetőségek szekció */
-.socials {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.socials h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-}
-
-.social-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-}
+.social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
 
 .social-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: transform 0.2s ease;
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .8rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600;
+  transition: transform .2s ease;
 }
+.social-link:hover { transform: scale(1.05); }
+.social-link i { font-size: 1.2rem; }
 
-.social-link:hover {
-    transform: scale(1.05);
-}
-
-.social-link i {
-    font-size: 1.2rem;
-}
-
-.social-link.twitch { background-color: #9146ff; color: white; }
-.social-link.discord { background-color: #5865F2; color: white; }
-.social-link.x { background-color: #ffffff; color: #000000; }
+.social-link.twitch { background-color: #9146ff; color: #fff; }
+.social-link.discord { background-color: #5865F2; color: #fff; }
+.social-link.x { background-color: #fff; color: #000; }
 
 /* Lábléc */
-footer {
-    text-align: center;
-    padding: 2rem 1rem;
-    color: var(--secondary-text-color);
-    font-size: 0.9rem;
-}
+footer { text-align: center; padding: 2rem 1rem; color: var(--secondary-text-color); font-size: .9rem; }
 
-/* Mobilos nézet (automatikusan működik a grid miatt, de finomíthatunk) */
-/* ================================================= */
-/* MOBILNÉZET - VÉGLEGES, DINAMIKUS MAGASSÁGÚ MENÜVEL */
-/* ================================================= */
+/* Mobil finomhangolás */
 @media (max-width: 768px) {
+  html { scroll-padding-top: 120px; }
+  header { padding-top: 140px; }
+  header h1 { font-size: 2rem; }
 
-    /* A menü ne takarja ki a tartalmat ugráskor mobilon sem */
-    html {
-        /* Megnöveljük, hogy a 2 soros menü se takarjon ki semmit */
-        scroll-padding-top: 120px; 
-    }
+  .main-nav { padding: .75rem 0; }
+  .main-nav ul { flex-wrap: wrap; justify-content: center; padding: 0 .5rem; }
+  .main-nav li { margin: .2rem .4rem; }
+  .main-nav a { font-size: .85rem; padding: .4rem .6rem; }
 
-    /* A fejlécet is lejjebb toljuk, hogy legyen elég hely */
-    header {
-        padding-top: 140px; 
-    }
-    
-    header h1 {
-        font-size: 2rem;
-    }
+  #twitch-status {
+    position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%);
+    display: flex; align-items: center; background-color: #2e2e2e;
+    padding: .5rem 1rem; border-radius: 20px; text-decoration: none;
+    color: var(--primary-text-color); font-weight: bold;
+    border: 1px solid var(--border-color); transition: all .3s ease;
+  }
 
-    /* ==== A NAVIGÁCIÓS SÁV JAVÍTÁSA ==== */
-    .main-nav {
-        /* A fix magasság helyett paddingot használunk, így tud nyúlni */
-        padding: 0.75rem 0; 
-    }
-    
-    .main-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 0 0.5rem;
-    }
-    
-    .main-nav li {
-        margin: 0.2rem 0.4rem;
-    }
-
-    .main-nav a {
-        font-size: 0.85rem; /* Még egy picit kisebbre vesszük */
-        padding: 0.4rem 0.6rem;
-    }
-
-    /* Az élő jelzőt is ehhez a magassághoz igazítjuk */
-    #twitch-status {
-         /* A POZICIONÁLÁS MEGADÁSA */
-    position: absolute; /* Kivesszük a normál elrendezésből, hogy ne zavarja a menü középre igazítását */
-    right: 1.5rem;      /* A jobb szélhez igazítjuk */
-    top: 50%;           /* Függőlegesen középre helyezzük... */
-    transform: translateY(-50%); /* ...és ezzel a trükkel tökéletesen beállítjuk a magasságát */
-
-    /* A többi stílus (szín, padding, stb.) változatlan marad */
-    display: flex;
-    align-items: center;
-    background-color: #2e2e2e;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    text-decoration: none;
-    color: var(--primary-text-color);
-    font-weight: bold;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-    }
-
-    /* A pozícióját a szülőhöz kötjük, nem a sávhoz */
-    #twitch-status i.fa-twitch,
-    #twitch-status .live-dot,
-    #twitch-status span {
-        vertical-align: middle;
-    }
+  #twitch-status i.fa-twitch, #twitch-status .live-dot, #twitch-status span { vertical-align: middle; }
 }
 
-/* ================================================= */
-/* ÚJ: ÉLŐ ADÁS JELZŐ STÍLUSAI                     */
-/* ================================================= */
+/* Twitch jelző */
 #twitch-status {
-    
-    /* A többi stílus változatlan marad */
-    display: flex;
-    align-items: center;
-    background-color: #2e2e2e;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    text-decoration: none;
-    color: var(--primary-text-color);
-    font-weight: bold;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+  display: flex; align-items: center; background-color: #2e2e2e;
+  padding: .5rem 1rem; border-radius: 20px; text-decoration: none;
+  color: var(--primary-text-color); font-weight: bold;
+  border: 1px solid var(--border-color); transition: all .3s ease;
 }
-
-#twitch-status:hover {
-    background-color: #9146ff; /* Twitch lila szín */
-    transform: scale(1.05);
-}
-
+#twitch-status:hover { background-color: #9146ff; transform: scale(1.05); }
 #twitch-status .live-dot {
-    width: 10px;
-    height: 10px;
-    background-color: #e91916; /* Piros pötty */
-    border-radius: 50%;
-    margin-right: 0.75rem;
-    animation: pulse 1.5s infinite; /* Pulzáló animáció */
+  width: 10px; height: 10px; background-color: #e91916; border-radius: 50%;
+  margin-right: .75rem; animation: pulse 1.5s infinite;
 }
+#twitch-status i.fa-twitch { margin-right: .5rem; font-size: 1.2rem; }
 
-#twitch-status i.fa-twitch {
-    margin-right: 0.5rem;
-    font-size: 1.2rem;
-}
-
-/* A pulzáló animáció */
 @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(233, 25, 22, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(233, 25, 22, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(233, 25, 22, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(233,25,22,0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(233,25,22,0); }
+  100% { box-shadow: 0 0 0 0 rgba(233,25,22,0); }
 }
 
-/* Segédosztály az elrejtéshez */
-.hidden {
-    display: none !important;
-}
+/* Utility */
+.hidden { display: none !important; }
 
-/* ===== Verification Modal ===== */
-.verify-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  display: grid;
-  place-items: center;
-  z-index: 2000; /* a nav (1000) fölé */
+/* ================================================= */
+/* GATE OVERLAY (Brave-safe) – ÚJ */
+/* ================================================= */
+.gate-overlay {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  background: rgba(0, 0, 0, 0.72); z-index: 3000;
 }
+.gate-hidden { display: none !important; }
 
-.verify-overlay.hidden {
-  display: none !important;
-}
-
-.verify-modal {
+.gate-dialog {
   width: min(640px, 92vw);
   background: var(--card-background);
   border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 1.25rem 1.25rem 1rem;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02) inset;
+}
+.gate-dialog h2 {
+  margin-bottom: .75rem; font-size: 1.4rem; color: var(--primary-text-color); text-align: center;
+}
+.gate-text {
+  text-align: center; max-width: 60ch; margin: 0 auto 1.25rem auto;
+  color: var(--secondary-text-color); line-height: 1.55; font-size: .98rem;
 }
 
-.verify-modal h2 {
-  margin-bottom: 0.75rem;
-  font-size: 1.4rem;
-  color: var(--primary-text-color);
-  text-align: center;
+/* Check-ek egymás alatt */
+.gate-checks { display: flex; flex-direction: column; align-items: center; gap: .8rem; margin-bottom: 1rem; }
+.gate-row {
+  display: grid; grid-template-columns: 20px 1fr; column-gap: .6rem; align-items: start;
+  width: 100%; max-width: 640px; text-align: left;
 }
-
-.verify-text {
-  color: var(--secondary-text-color);
-  font-size: 0.98rem;
-  line-height: 1.55;
-  margin-bottom: 1rem;
-  text-align: left;
+.gate-row input[type="checkbox"] {
+  width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent-color); cursor: pointer;
 }
+.gate-row span { display: block; line-height: 1.45; }
 
-.verify-checkboxes {
-  display: grid;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-}
+/* Gombok */
+.gate-actions { display: flex; justify-content: center; gap: .6rem; }
 
-.checkbox-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  color: var(--primary-text-color);
-}
-
-.checkbox-row input[type="checkbox"] {
-  transform: translateY(2px);
-  width: 18px;
-  height: 18px;
-  accent-color: var(--accent-color);
-  cursor: pointer;
-}
-
-.verify-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.6rem;
-}
-
-.btn {
-  appearance: none;
+.gbtn {
   border: 1px solid var(--border-color);
   background: var(--card-background);
   color: var(--primary-text-color);
-  padding: 0.6rem 1rem;
+  padding: .6rem 1rem;
   border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+  transition: transform .15s ease, background-color .2s ease, border-color .2s ease, opacity .2s ease;
 }
+.gbtn:hover { transform: translateY(-1px); }
 
-.btn:hover { transform: translateY(-1px); }
+.gbtn-primary { background: var(--accent-color); color: #000; border-color: transparent; opacity: .6; }
+.gbtn-primary:disabled { cursor: not-allowed; opacity: .45; }
+.gbtn-primary:not(:disabled) { opacity: 1; }
 
-.btn-primary {
-  background: var(--accent-color);
-  color: #000;
-  border-color: transparent;
-  opacity: 0.7; /* alapból inaktív érzet, amíg disabled */
-}
+.gbtn-secondary { background: #262626; }
 
-.btn-primary:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.btn-primary:not(:disabled) { opacity: 1; }
-
-.btn-secondary { background: #2e2e2e; }
+/* A TELJES APP rejtése a jóváhagyásig (#app-root kapcsolása) */
+.app-hidden { display: none !important; }
 
 @media (max-width: 480px) {
-  .verify-modal { padding: 1rem; }
-  .verify-modal h2 { font-size: 1.2rem; }
-  .verify-text { font-size: 0.95rem; }
+  .gate-dialog { padding: 1rem; }
+  .gate-dialog h2 { font-size: 1.2rem; }
+  .gate-text { max-width: 48ch; }
 }
-
-
-/* ===== Verification Modal – theme & alignment tweaks ===== */
-
-/* Az overlay marad sötét, illik a témához */
-.verify-overlay {
-  background: rgba(0, 0, 0, 0.72);
-}
-
-/* A modal a meglévő színváltozókat használja,
-   enyhe belső fény árnyalattal a kártya-hatásért */
-.verify-modal {
-  background: var(--card-background);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 24px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02) inset;
-}
-
-/* Cím középre */
-.verify-modal h2 {
-  text-align: center;
-}
-
-/* A fő szöveg középre igazítva, kellemes sorhossz */
-.verify-text {
-  text-align: center;
-  max-width: 60ch;
-  margin: 0 auto 1.25rem auto;
-  color: var(--secondary-text-color);
-}
-
-/* A checkbox-sorok rendezetten, középen a konténerben */
-.verify-checkboxes {
-  display: grid;
-  justify-items: center;   /* középre igazítja a sorokat */
-  gap: 0.7rem;
-}
-
-/* Maguk a sorok kapjanak fix max-szélességet és középre igazítást,
-   hogy ne nyúljon túl szélesre mobilon */
-.checkbox-row {
-  width: 100%;
-  max-width: 640px;
-  justify-content: center;   /* a tartalmat középre húzza */
-  text-align: left;          /* a soron belüli szöveg maradjon jól olvasható */
-  padding: 0 0.25rem;
-}
-
-/* Gombok rendezett elhelyezése – nagy képernyőn jobbra,
-   mobilon szépen tördelve */
-.verify-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;   /* középre, harmonizál a modal elrendezésével */
-  gap: 0.6rem;
-  margin-top: 0.25rem;
-}
-
-/* Gombok finomabb megjelenése a témához */
-.btn {
-  border: 1px solid var(--border-color);
-  background: var(--card-background);
-  color: var(--primary-text-color);
-}
-
-.btn-primary {
-  background: var(--accent-color);
-  color: #000;
-  border-color: transparent;
-}
-
-.btn-secondary {
-  background: #262626; /* sötét, a kártyához illő */
-}
-
-/* Kis kijelzőn még barátibb tipográfia */
-@media (max-width: 480px) {
-  .verify-text { max-width: 48ch; }
-}
-
-
-/* ===== Verification checkboxes: stacked & wrapped ===== */
-.verify-checkboxes {
-  display: flex;
-  flex-direction: column;   /* egymás alá kerülnek */
-  align-items: center;      /* a sorok közepe felé igazítva */
-  gap: 0.8rem;
-}
-
-/* Kétoszlopos sor: balra a checkbox, jobbra a szöveg, ami több sorban törhet */
-.checkbox-row {
-  display: grid;
-  grid-template-columns: 20px 1fr; /* 1. oszlop: checkbox; 2.: szöveg */
-  column-gap: 0.6rem;
-  align-items: start;
-  width: 100%;
-  max-width: 640px;  /* ne legyen túl széles */
-  text-align: left;  /* a szöveg olvashatóbb balra zártan */
-}
-
-/* A checkbox méret/igazítás finomhangolása */
-.checkbox-row input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;   /* hogy a szöveg első sorával egy vonalban legyen */
-  accent-color: var(--accent-color);
-  cursor: pointer;
-}
-
-/* A szöveg blokkosan törhet, a saját checkboxához igazodva */
-.checkbox-row span {
-  display: block;
-  line-height: 1.45;
-}
-
-/* Kisebb kijelzőkön kicsit szűkebb sorhossz */
-@media (max-width: 480px) {
-  .checkbox-row { max-width: 90vw; }
-}
-
-
-/* ===== Gate: rejts el mindent a modalon kívül ===== */
-html.gated, body.gated { overflow: hidden; }
-
-body.gated > *:not(#verify-overlay) {
-  visibility: hidden !important;   /* semmi se látszódjon */
-  pointer-events: none !important; /* ne legyen kattintható */
-  user-select: none !important;    /* ne lehessen kijelölni semmit */
-}
-
-
-
