@@ -247,6 +247,7 @@ footer { text-align: center; padding: 2rem 1rem; color: var(--secondary-text-col
   .gate-text { max-width: 48ch; }
 }
 
+
 /* === Accent szín RGB komponense (a glow-hoz) === */
 :root { --accent-rgb: 187, 134, 252; } /* #bb86fc */
 
@@ -313,5 +314,100 @@ footer { text-align: center; padding: 2rem 1rem; color: var(--secondary-text-col
     transform: none;
   }
 }
+
+/*-------------------------------*/
+
+/* --- Clean gradient + very subtle corner tint --- */
+:root { --accent-rgb: 187, 134, 252; } /* már definiáltad korábban, csak biztos ami biztos */
+
+body {
+  background: 
+    linear-gradient(180deg, #12111a 0%, #17122a 100%),
+    radial-gradient(80% 50% at 85% 0%, rgba(var(--accent-rgb), 0.06) 0%, rgba(0,0,0,0) 60%);
+  background-attachment: fixed; /* szép, stabil hatás nagy felületen is */
+}
+
+/* --- Subtle, card-friendly purple background --- */
+:root {
+  /* finom, kártyához közeli tónusok */
+  --bg-base-1: #141218;   /* nagyon sötét, enyhén lilás */
+  --bg-base-2: #17141d;   /* kicsit világosabb, közel a --card-background-hoz */
+  --bg-tint-rgb: 187, 134, 252; /* --accent-color rgb-je (#bb86fc) */
+}
+
+/* Lágy függőleges átmenet + nagyon halvány lila fényfoltok */
+body {
+  background:
+    /* enyhe, nagyléptékű vignette a széleken */
+    radial-gradient(140% 100% at 50% 0%,
+      rgba(var(--bg-tint-rgb), 0.030) 0%,
+      rgba(0,0,0,0) 55%),
+    radial-gradient(120% 80% at 85% 15%,
+      rgba(var(--bg-tint-rgb), 0.025) 0%,
+      rgba(0,0,0,0) 50%),
+    /* fő, kártya-barát átmenet */
+    linear-gradient(180deg, var(--bg-base-1) 0%, var(--bg-base-2) 100%);
+  background-attachment: fixed;
+}
+
+/* opcionális: a fő konténeren még puhíthatunk a kontraszton */
+main {
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.00),
+    rgba(255,255,255,0.00));
+  /* ha még mindig erős a kontraszt, emeld a bg-base-eket 1-2 hex lépcsővel */
+}
+
+/* === Lilás tónus a menünek és a kártyáknak, a gradient mögötte marad === */
+:root {
+  /* az accent (#bb86fc) RGB-je – már használtad is */
+  --accent-rgb: 187, 134, 252;
+  /* finom tónuserő, tetszés szerint állítható */
+  --nav-tint: 0.08;   /* menü lilásítása */
+  --card-tint: 0.06;  /* kártya lilásítása */
+}
+
+/* Felső menü – enyhe lilás overlay a kártyaszín felett */
+.main-nav {
+  background:
+    linear-gradient(180deg,
+      rgba(var(--accent-rgb), var(--nav-tint)) 0%,
+      rgba(var(--accent-rgb), calc(var(--nav-tint) * 0.35)) 60%,
+      rgba(0,0,0,0) 100%),
+    var(--card-background);
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.22);
+  box-shadow:
+    0 2px 10px rgba(0,0,0,0.5),
+    0 0 18px rgba(var(--accent-rgb), 0.06) inset;
+}
+
+/* Kártyák – finom lilás alap, a korábbi hover-glow továbbra is működik */
+.casino-card {
+  background:
+    linear-gradient(180deg,
+      rgba(var(--accent-rgb), var(--card-tint)) 0%,
+      rgba(0,0,0,0) 100%),
+    var(--card-background);
+  border-color: rgba(var(--accent-rgb), 0.30); /* kissé lilás keret */
+  box-shadow:
+    0 0 0 1px rgba(var(--accent-rgb), 0.10) inset,
+    0 2px 6px rgba(0,0,0,0.40),
+    0 0 12px rgba(var(--accent-rgb), 0.06);
+}
+
+/* Ha a kártya címsor/szöveg elválik a tónustól, picit kontrasztosítsunk rajta */
+.casino-card h3 { color: var(--primary-text-color); }
+.casino-card p  { color: var(--secondary-text-color); }
+
+/* Opcionális: a section-címek alatt nagyon finom, lilás elválasztó “glow” */
+.section-divider {
+  background:
+    linear-gradient(90deg, rgba(var(--accent-rgb),0) 0%,
+                           rgba(var(--accent-rgb),.25) 50%,
+                           rgba(var(--accent-rgb),0) 100%);
+  height: 1px;
+}
+
+
 
 
