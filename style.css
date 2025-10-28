@@ -384,3 +384,236 @@ footer {
     display: none !important;
 }
 
+/* ===== Verification Modal ===== */
+.verify-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: grid;
+  place-items: center;
+  z-index: 2000; /* a nav (1000) fölé */
+}
+
+.verify-overlay.hidden {
+  display: none !important;
+}
+
+.verify-modal {
+  width: min(640px, 92vw);
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.25rem 1.25rem 1rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+
+.verify-modal h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  color: var(--primary-text-color);
+  text-align: center;
+}
+
+.verify-text {
+  color: var(--secondary-text-color);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.verify-checkboxes {
+  display: grid;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--primary-text-color);
+}
+
+.checkbox-row input[type="checkbox"] {
+  transform: translateY(2px);
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.verify-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--border-color);
+  background: var(--card-background);
+  color: var(--primary-text-color);
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+
+.btn-primary {
+  background: var(--accent-color);
+  color: #000;
+  border-color: transparent;
+  opacity: 0.7; /* alapból inaktív érzet, amíg disabled */
+}
+
+.btn-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.btn-primary:not(:disabled) { opacity: 1; }
+
+.btn-secondary { background: #2e2e2e; }
+
+@media (max-width: 480px) {
+  .verify-modal { padding: 1rem; }
+  .verify-modal h2 { font-size: 1.2rem; }
+  .verify-text { font-size: 0.95rem; }
+}
+
+
+/* ===== Verification Modal – theme & alignment tweaks ===== */
+
+/* Az overlay marad sötét, illik a témához */
+.verify-overlay {
+  background: rgba(0, 0, 0, 0.72);
+}
+
+/* A modal a meglévő színváltozókat használja,
+   enyhe belső fény árnyalattal a kártya-hatásért */
+.verify-modal {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02) inset;
+}
+
+/* Cím középre */
+.verify-modal h2 {
+  text-align: center;
+}
+
+/* A fő szöveg középre igazítva, kellemes sorhossz */
+.verify-text {
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto 1.25rem auto;
+  color: var(--secondary-text-color);
+}
+
+/* A checkbox-sorok rendezetten, középen a konténerben */
+.verify-checkboxes {
+  display: grid;
+  justify-items: center;   /* középre igazítja a sorokat */
+  gap: 0.7rem;
+}
+
+/* Maguk a sorok kapjanak fix max-szélességet és középre igazítást,
+   hogy ne nyúljon túl szélesre mobilon */
+.checkbox-row {
+  width: 100%;
+  max-width: 640px;
+  justify-content: center;   /* a tartalmat középre húzza */
+  text-align: left;          /* a soron belüli szöveg maradjon jól olvasható */
+  padding: 0 0.25rem;
+}
+
+/* Gombok rendezett elhelyezése – nagy képernyőn jobbra,
+   mobilon szépen tördelve */
+.verify-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* középre, harmonizál a modal elrendezésével */
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+/* Gombok finomabb megjelenése a témához */
+.btn {
+  border: 1px solid var(--border-color);
+  background: var(--card-background);
+  color: var(--primary-text-color);
+}
+
+.btn-primary {
+  background: var(--accent-color);
+  color: #000;
+  border-color: transparent;
+}
+
+.btn-secondary {
+  background: #262626; /* sötét, a kártyához illő */
+}
+
+/* Kis kijelzőn még barátibb tipográfia */
+@media (max-width: 480px) {
+  .verify-text { max-width: 48ch; }
+}
+
+
+/* ===== Verification checkboxes: stacked & wrapped ===== */
+.verify-checkboxes {
+  display: flex;
+  flex-direction: column;   /* egymás alá kerülnek */
+  align-items: center;      /* a sorok közepe felé igazítva */
+  gap: 0.8rem;
+}
+
+/* Kétoszlopos sor: balra a checkbox, jobbra a szöveg, ami több sorban törhet */
+.checkbox-row {
+  display: grid;
+  grid-template-columns: 20px 1fr; /* 1. oszlop: checkbox; 2.: szöveg */
+  column-gap: 0.6rem;
+  align-items: start;
+  width: 100%;
+  max-width: 640px;  /* ne legyen túl széles */
+  text-align: left;  /* a szöveg olvashatóbb balra zártan */
+}
+
+/* A checkbox méret/igazítás finomhangolása */
+.checkbox-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;   /* hogy a szöveg első sorával egy vonalban legyen */
+  accent-color: var(--accent-color);
+  cursor: pointer;
+}
+
+/* A szöveg blokkosan törhet, a saját checkboxához igazodva */
+.checkbox-row span {
+  display: block;
+  line-height: 1.45;
+}
+
+/* Kisebb kijelzőkön kicsit szűkebb sorhossz */
+@media (max-width: 480px) {
+  .checkbox-row { max-width: 90vw; }
+}
+
+
+/* ===== Gate: rejts el mindent a modalon kívül ===== */
+html.gated, body.gated { overflow: hidden; }
+
+body.gated > *:not(#verify-overlay) {
+  visibility: hidden !important;   /* semmi se látszódjon */
+  pointer-events: none !important; /* ne legyen kattintható */
+  user-select: none !important;    /* ne lehessen kijelölni semmit */
+}
+
+
+
